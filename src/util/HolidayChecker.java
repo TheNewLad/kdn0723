@@ -3,10 +3,12 @@ package util;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+import static java.time.temporal.TemporalAdjusters.firstInMonth;
+
 public class HolidayChecker {
 
     public static boolean isHoliday(LocalDate date) {
-        return isIndependenceDay(date);
+        return isIndependenceDay(date) || isLaborDay(date);
     }
 
     private static boolean isIndependenceDay(LocalDate date) {
@@ -22,5 +24,14 @@ public class HolidayChecker {
         }
 
         return LocalDate.of(year, 7, 4);
+    }
+
+    private static boolean isLaborDay(LocalDate date) {
+        LocalDate laborDay = getLaborDay(date.getYear());
+        return date.equals(laborDay);
+    }
+
+    private static LocalDate getLaborDay(int year) {
+        return LocalDate.of(year, 9, 1).with(firstInMonth(DayOfWeek.MONDAY));
     }
 }

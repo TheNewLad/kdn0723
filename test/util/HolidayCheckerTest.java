@@ -38,4 +38,10 @@ class HolidayCheckerTest {
                 () -> assertTrue(HolidayChecker.isHoliday(sundayIndependenceDay))
         );
     }
+
+    @Test
+    public void Should_ReturnTrue_When_DateIsLaborDay() {
+        LocalDate date = LocalDate.of(2023, 9, 4);
+        assertTrue(HolidayChecker.isHoliday(date));
+    }
 }
