@@ -16,7 +16,7 @@ public class MockDataSourceTest {
     }
 
     @Test
-    public void should_return_correct_tool_when_tool_code_is_valid() {
+    public void Should_ReturnCorrectTool_When_ToolCodeIsValid() {
         Tool actualTool = mockDataSource.findTool("CHNS");
         assertAll(
                 () -> assertEquals("CHNS", actualTool.getToolCode()),
@@ -30,7 +30,7 @@ public class MockDataSourceTest {
     }
 
     @Test
-    public void should_return_null_when_tool_code_is_invalid() {
+    public void Should_ReturnNull_When_ToolCodeIsInvalid() {
         Tool actualTool = mockDataSource.findTool("INVALID");
         assertNull(actualTool);
     }
