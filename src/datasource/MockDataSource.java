@@ -36,12 +36,9 @@ public class MockDataSource {
     }
 
     public Tool findTool(String toolCode) {
-        for (Tool tool : tools) {
-            if (tool.getToolCode().equals(toolCode)) {
-                return tool;
-            }
-        }
-
-        return null;
+        return tools.stream()
+                .filter(tool -> tool.getToolCode().equals(toolCode))
+                .findFirst()
+                .orElse(null);
     }
 }
