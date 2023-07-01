@@ -2,33 +2,33 @@ package util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
 public class HolidayChecker {
 
     public static boolean isHoliday(LocalDate date) {
-        return isIndependenceDay(date) || isLaborDay(date);
-    }
-
-    private static boolean isIndependenceDay(LocalDate date) {
-        LocalDate independenceDay = getIndependenceDay(date.getYear());
-        return date.equals(independenceDay);
-    }
-
-    private static LocalDate getIndependenceDay(int year) {
-        if (LocalDate.of(year, 7, 4).getDayOfWeek() == DayOfWeek.SATURDAY) {
-            return LocalDate.of(year, 7, 3);
-        } else if (LocalDate.of(year, 7, 4).getDayOfWeek() == DayOfWeek.SUNDAY) {
-            return LocalDate.of(year, 7, 5);
-        }
-
-        return LocalDate.of(year, 7, 4);
-    }
-
-    private static boolean isLaborDay(LocalDate date) {
         LocalDate laborDay = getLaborDay(date.getYear());
-        return date.equals(laborDay);
+        LocalDate independenceDay = getObservableHoliday(LocalDate.of(date.getYear(), 7, 4));
+
+        List<LocalDate> holidays = Arrays.asList(
+                laborDay,
+                independenceDay
+        );
+
+        return holidays.contains(date);
+    }
+
+    private static LocalDate getObservableHoliday(LocalDate date) {
+            if (date.getDayOfWeek() == DayOfWeek.SATURDAY) {
+                return date.minusDays(1);
+            } else if (date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                return date.plusDays(1);
+            }
+
+        return date;
     }
 
     private static LocalDate getLaborDay(int year) {
