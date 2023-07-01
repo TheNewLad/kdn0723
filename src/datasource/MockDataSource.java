@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MockDataSource {
     private static MockDataSource instance;
-    private List<Tool> tools;
+    private final List<Tool> tools;
 
     private MockDataSource() {
         tools = new ArrayList<>();
@@ -28,5 +28,15 @@ public class MockDataSource {
             instance = new MockDataSource();
         }
         return instance;
+    }
+
+    public Tool findTool(String toolCode) {
+        for (Tool tool : tools) {
+            if (tool.getToolCode().equals(toolCode)) {
+                return tool;
+            }
+        }
+
+        return null;
     }
 }
