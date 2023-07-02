@@ -14,10 +14,15 @@ public class Checkout {
         validateRentalDayCount(rentalDayCount);
         validateDiscountPercent(discountPercent);
 
-        this.toolCode = toolCode;
+        this.toolCode = toolCode; // I assume that the tool code is valid and exists in the database at this point.
         this.rentalDayCount = rentalDayCount;
         this.discountPercent = discountPercent;
         this.checkoutDate = checkoutDate;
+    }
+
+    public void generateRentalAgreement() {
+        RentalAgreement rentalAgreement = new RentalAgreement(toolCode, "", "", "", "", "", "", "", "", "", "", "");
+        rentalAgreement.print();
     }
 
     private void validateRentalDayCount(int rentalDayCount) {
