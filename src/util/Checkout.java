@@ -1,7 +1,7 @@
 package util;
 
 
-import datasource.MockDataSource;
+import datasource.ToolStore;
 import model.Tool;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ public class Checkout {
         validateRentalDayCount(rentalDayCount);
         validateDiscountPercent(discountPercent);
 
-        this.tool = MockDataSource.getInstance().findTool(toolCode); // I assume that the tool code is valid and exists in the database at this point.
+        this.tool = ToolStore.getInstance().findTool(toolCode); // I assume that the tool code is valid and exists in the database at this point.
         this.rentalDayCount = rentalDayCount;
         this.discountPercent = discountPercent;
         this.checkoutDate = checkoutDate;
