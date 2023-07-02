@@ -1,19 +1,26 @@
 package datasource;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Tool;
 import model.ToolType;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class MockDataSource {
-    private static MockDataSource instance;
+public class ToolStore {
+    private static ToolStore instance;
     private final List<Tool> tools;
 
-    private MockDataSource() {
+    private ToolStore() {
         tools = new ArrayList<>();
 
         initDataSource();
+    }
+
+    public static ToolStore getInstance() {
+        if (instance == null) {
+            instance = new ToolStore();
+        }
+
+        return instance;
     }
 
     private void initDataSource() {
@@ -25,14 +32,6 @@ public class MockDataSource {
         tools.add(new Tool("LADW", ladder, "Werner"));
         tools.add(new Tool("JAKD", jackhammer, "DeWalt"));
         tools.add(new Tool("JAKR", jackhammer, "Ridgid"));
-    }
-
-    public static MockDataSource getInstance() {
-        if (instance == null) {
-            instance = new MockDataSource();
-        }
-
-        return instance;
     }
 
     public Tool findTool(String toolCode) {

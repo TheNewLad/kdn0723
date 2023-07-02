@@ -1,23 +1,22 @@
 package datasource;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import model.Tool;
-import model.ToolType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class MockDataSourceTest {
-    MockDataSource mockDataSource;
+public class ToolStoreTest {
+    ToolStore toolStore;
 
     @BeforeEach
     public void setUp() {
-        mockDataSource = MockDataSource.getInstance();
+        toolStore = ToolStore.getInstance();
     }
 
     @Test
     public void Should_ReturnCorrectTool_When_ToolCodeIsValid() {
-        Tool actualTool = mockDataSource.findTool("CHNS");
+        Tool actualTool = toolStore.findTool("CHNS");
         assertAll(
                 () -> assertEquals("CHNS", actualTool.getToolCode()),
                 () -> assertEquals("Chainsaw", actualTool.getToolType().getType()),
@@ -31,7 +30,7 @@ public class MockDataSourceTest {
 
     @Test
     public void Should_ReturnNull_When_ToolCodeIsInvalid() {
-        Tool actualTool = mockDataSource.findTool("INVALID");
+        Tool actualTool = toolStore.findTool("INVALID");
         assertNull(actualTool);
     }
 }
