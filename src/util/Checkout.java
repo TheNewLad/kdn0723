@@ -2,9 +2,8 @@ package util;
 
 
 import datasource.ToolStore;
-import model.Tool;
-
 import java.time.LocalDate;
+import model.Tool;
 
 public class Checkout {
 
@@ -24,7 +23,7 @@ public class Checkout {
     }
 
     public void generateRentalAgreement() {
-        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), tool.getToolType().getType(), "", "", "", "", "", "", "", "", "", "");
+        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), tool.getToolType().getType(), tool.getBrand(), "", "", "", "", "", "", "", "", "");
         rentalAgreement.print();
     }
 

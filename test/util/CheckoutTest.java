@@ -75,4 +75,15 @@ class CheckoutTest {
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
+
+    @Test
+    public void RentalAgreement_Should_ContainToolBrand_OnCheckout() {
+        Checkout checkout = new Checkout("LADW", 1, 0, LocalDate.of(2023, 7, 3));
+        checkout.generateRentalAgreement();
+
+        String consoleOutput = outputStream.toString();
+        String expectedOutput = "Tool brand: Werner";
+
+        assertTrue(consoleOutput.contains(expectedOutput));
+    }
 }
