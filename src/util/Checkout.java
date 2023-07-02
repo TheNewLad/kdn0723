@@ -12,6 +12,7 @@ public class Checkout {
 
     public Checkout(String toolCode, int rentalDayCount, int discountPercent, LocalDate checkoutDate) {
         validateRentalDayCount(rentalDayCount);
+        validateDiscountPercent(discountPercent);
 
         this.toolCode = toolCode;
         this.rentalDayCount = rentalDayCount;
@@ -22,6 +23,12 @@ public class Checkout {
     private void validateRentalDayCount(int rentalDayCount) {
         if (rentalDayCount < 1) {
             throw new IllegalArgumentException("Rental day count is not 1 or greater.");
+        }
+    }
+
+    private void validateDiscountPercent(int discountPercent) {
+        if (discountPercent < 0 || discountPercent > 100) {
+            throw new IllegalArgumentException("Discount percent is not in the range 0-100.");
         }
     }
 }
