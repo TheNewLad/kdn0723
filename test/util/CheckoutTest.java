@@ -188,4 +188,15 @@ class CheckoutTest {
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
+
+    @Test
+    public void RentalAgreement_Should_ContainDiscountPercentage_OnCheckout() {
+        Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
+        checkout.generateRentalAgreement();
+
+        String consoleOutput = outputStream.toString();
+        String expectedOutput = "Discount percent: 10%";
+
+        assertTrue(consoleOutput.contains(expectedOutput));
+    }
 }

@@ -1,8 +1,7 @@
 package util;
 
 import static util.DayChecker.*;
-import static util.Formatter.formatCurrency;
-import static util.Formatter.formatDate;
+import static util.Formatter.*;
 
 import datasource.ToolStore;
 import java.time.LocalDate;
@@ -105,7 +104,7 @@ public class Checkout {
             String.valueOf(getChargeDays()),
             formatCurrency(getPreDiscountCharge()),
             "",
-            "",
+            formatPercent(getDiscountPercent()),
             "");
     rentalAgreement.print();
   }
