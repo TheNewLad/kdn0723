@@ -47,4 +47,8 @@ public class ToolType {
   public void removeChargeDay(DayType dayType) {
     chargeDays.remove(dayType);
   }
+
+  public boolean isChargeDay(DayType dayType) {
+    return chargeDays.contains(dayType);
+  }
 }
