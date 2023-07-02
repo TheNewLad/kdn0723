@@ -47,6 +47,6 @@ class DayCheckerTest {
   @Test
   public void Should_ReturnHoliday_When_DateIsLaborDay() {
     LocalDate date = LocalDate.of(2023, 9, 4);
-    assertTrue(HOLIDAY == getDayType(date));
+    assertEquals(HOLIDAY, getDayType(date));
   }
 }
