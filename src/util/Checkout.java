@@ -24,7 +24,7 @@ public class Checkout {
     }
 
     public void generateRentalAgreement() {
-        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), "", "", "", "", "", "", "", "", "", "", "");
+        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), tool.getToolType().getType(), "", "", "", "", "", "", "", "", "", "");
         rentalAgreement.print();
     }
 
