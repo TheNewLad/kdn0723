@@ -55,7 +55,7 @@ class CheckoutTest {
     }
 
     @Test
-    void RentalAgreement_Should_ContainToolCode_OnCheckout() {
+    public void RentalAgreement_Should_ContainToolCode_OnCheckout() {
         Checkout checkout = new Checkout("LADW", 1, 0, LocalDate.of(2023, 7, 3));
         checkout.generateRentalAgreement();
 

@@ -1,11 +1,14 @@
 package util;
 
 
+import datasource.MockDataSource;
+import model.Tool;
+
 import java.time.LocalDate;
 
 public class Checkout {
 
-    private final String toolCode;
+    private final Tool tool;
     private final int rentalDayCount;
     private final int discountPercent;
     private final LocalDate checkoutDate;
@@ -14,14 +17,14 @@ public class Checkout {
         validateRentalDayCount(rentalDayCount);
         validateDiscountPercent(discountPercent);
 
-        this.toolCode = toolCode; // I assume that the tool code is valid and exists in the database at this point.
+        this.tool = MockDataSource.getInstance().findTool(toolCode); // I assume that the tool code is valid and exists in the database at this point.
         this.rentalDayCount = rentalDayCount;
         this.discountPercent = discountPercent;
         this.checkoutDate = checkoutDate;
     }
 
     public void generateRentalAgreement() {
-        RentalAgreement rentalAgreement = new RentalAgreement(toolCode, "", "", "", "", "", "", "", "", "", "", "");
+        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), "", "", "", "", "", "", "", "", "", "", "");
         rentalAgreement.print();
     }
 
