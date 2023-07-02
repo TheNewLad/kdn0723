@@ -56,7 +56,7 @@ public class Checkout {
             getTool().getToolType().getType(),
             getTool().getBrand(),
             String.valueOf(getRentalDayCount()),
-            formatDate(checkoutDate),
+            formatDate(getCheckoutDate()),
             formatDate(getDueDate()),
             formatCurrency(getTool().getToolType().getDailyCharge()),
             "",
