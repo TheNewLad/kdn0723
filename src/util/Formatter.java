@@ -1,5 +1,7 @@
 package util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class Formatter {
@@ -9,7 +11,8 @@ public class Formatter {
     }
 
     public static String formatCurrency(double amount) {
-        return String.format("$%.2f", Math.round(amount * 100.0) / 100.0);
+        BigDecimal roundedValue = BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_UP);
+        return "$" + roundedValue;
     }
 
     public static String formatPercent(int percent) {
