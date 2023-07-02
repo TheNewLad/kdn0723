@@ -43,4 +43,14 @@ class DayCheckerTest {
         LocalDate date = LocalDate.of(2023, 9, 4);
         assertTrue(DayChecker.isHoliday(date));
     }
+
+    @Test
+    public void Should_ReturnTrue_When_DateIsWeekend() {
+        LocalDate saturday = LocalDate.of(2023, 7, 1);
+        LocalDate sunday = LocalDate.of(2023, 7, 2);
+        assertAll(
+                () -> assertTrue(DayChecker.isWeekend(saturday)),
+                () -> assertTrue(DayChecker.isWeekend(sunday))
+        );
+    }
 }

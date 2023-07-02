@@ -9,6 +9,10 @@ import java.util.List;
 
 public class DayChecker {
 
+    public static boolean isWeekend(LocalDate date) {
+        return date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY;
+    }
+
     public static boolean isHoliday(LocalDate date) {
         LocalDate laborDay = getLaborDay(date.getYear());
         LocalDate independenceDay = getObservableHoliday(LocalDate.of(date.getYear(), 7, 4));
