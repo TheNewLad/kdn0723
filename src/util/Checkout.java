@@ -83,6 +83,12 @@ public class Checkout {
     }
   }
 
+  private double getPreDiscountCharge() {
+    ToolType toolType = getTool().getToolType();
+
+    return getChargeDays() * toolType.getDailyCharge();
+  }
+
   public void generateRentalAgreement() {
     Tool tool = getTool();
     ToolType toolType = tool.getToolType();
@@ -97,7 +103,7 @@ public class Checkout {
             formatDate(getDueDate()),
             formatCurrency(toolType.getDailyCharge()),
             String.valueOf(getChargeDays()),
-            "",
+            formatCurrency(getPreDiscountCharge()),
             "",
             "",
             "");
