@@ -11,4 +11,8 @@ public class Formatter {
     public static String formatCurrency(double amount) {
         return String.format("$%.2f", Math.round(amount * 100.0) / 100.0);
     }
+
+    public static String formatPercent(int percent) {
+        return String.format("%d%%", percent);
+    }
 }
