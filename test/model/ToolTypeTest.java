@@ -26,12 +26,12 @@ class ToolTypeTest {
   public void Should_ReturnTrue_When_DayTypeIsChargeDay() {
     ToolType toolType = new ToolType("Ladder", 1.99);
     toolType.addChargeDay(DayType.WEEKDAY);
-    assertTrue(toolType.isChargeDay(DayType.WEEKDAY));
+    assertTrue(toolType.isChargeableDay(DayType.WEEKDAY));
   }
 
   @Test
   public void Should_ReturnFalse_When_DayTypeIsNotChargeDay() {
     ToolType toolType = new ToolType("Ladder", 1.99);
-    assertFalse(toolType.isChargeDay(DayType.WEEKDAY));
+    assertFalse(toolType.isChargeableDay(DayType.WEEKDAY));
   }
 }

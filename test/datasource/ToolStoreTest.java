@@ -25,9 +25,9 @@ public class ToolStoreTest {
                 () -> assertEquals("CHNS", actualTool.getToolCode()),
                 () -> assertEquals("Chainsaw", actualToolType.getType()),
                 () -> assertEquals(1.49, actualToolType.getDailyCharge()),
-                () -> assertTrue(actualToolType.isChargeDay(DayType.WEEKDAY)),
-                () -> assertFalse(actualToolType.isChargeDay(DayType.WEEKEND)),
-                () -> assertTrue(actualToolType.isChargeDay(DayType.HOLIDAY)),
+                () -> assertTrue(actualToolType.isChargeableDay(DayType.WEEKDAY)),
+                () -> assertFalse(actualToolType.isChargeableDay(DayType.WEEKEND)),
+                () -> assertTrue(actualToolType.isChargeableDay(DayType.HOLIDAY)),
                 () -> assertEquals("Stihl", actualTool.getBrand())
         );
     }

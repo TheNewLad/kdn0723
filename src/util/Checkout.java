@@ -71,7 +71,7 @@ public class Checkout {
       DayType dayType = getDayType(date);
       ToolType toolType = getTool().getToolType();
 
-      if (toolType.isChargeDay(dayType)) {
+      if (toolType.isChargeableDay(dayType)) {
         chargeDays++;
       }
 
