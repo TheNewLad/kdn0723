@@ -5,23 +5,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class CheckoutTest {
 
   private static final PrintStream systemOut = System.out;
-  private static final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-  private static final PrintStream testOut = new PrintStream(outputStream);
+  private static ByteArrayOutputStream outputStream;
 
-  @BeforeAll
-  public static void setUp() {
+  @BeforeEach
+  public void setUp() {
+    outputStream = new ByteArrayOutputStream();
+    PrintStream testOut = new PrintStream(outputStream);
     System.setOut(testOut);
   }
 
-  @AfterAll
-  public static void tearDown() {
+  @AfterEach
+  public void tearDown() {
     System.setOut(systemOut);
   }
 
@@ -177,41 +176,41 @@ class CheckoutTest {
     assertTrue(consoleOutput.contains(expectedOutput));
   }
 
-    @Test
-    public void RentalAgreement_Should_ContainPreDiscountCharge_OnCheckout() {
-        Checkout checkout = new Checkout("LADW", 5, 0, LocalDate.of(2023, 6, 30));
-        checkout.generateRentalAgreement();
+  @Test
+  public void RentalAgreement_Should_ContainPreDiscountCharge_OnCheckout() {
+    Checkout checkout = new Checkout("LADW", 5, 0, LocalDate.of(2023, 6, 30));
+    checkout.generateRentalAgreement();
 
-        String consoleOutput = outputStream.toString();
-        String expectedOutput = "Pre-discount charge: $7.96";
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Pre-discount charge: $7.96";
 
-        assertTrue(consoleOutput.contains(expectedOutput));
-    }
+    assertTrue(consoleOutput.contains(expectedOutput));
+  }
 
-    @Test
-    public void RentalAgreement_Should_ContainDiscountPercentage_OnCheckout() {
-        Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
-        checkout.generateRentalAgreement();
+  @Test
+  public void RentalAgreement_Should_ContainDiscountPercentage_OnCheckout() {
+    Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
+    checkout.generateRentalAgreement();
 
-        String consoleOutput = outputStream.toString();
-        String expectedOutput = "Discount percent: 10%";
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Discount percent: 10%";
 
-        assertTrue(consoleOutput.contains(expectedOutput));
-    }
+    assertTrue(consoleOutput.contains(expectedOutput));
+  }
 
-    @Test
-    public void RentalAgreement_Should_ContainDiscountAmount_OnCheckout() {
-        Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
-        checkout.generateRentalAgreement();
+  @Test
+  public void RentalAgreement_Should_ContainDiscountAmount_OnCheckout() {
+    Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
+    checkout.generateRentalAgreement();
 
-        String consoleOutput = outputStream.toString();
-        String expectedOutput = "Discount amount: $0.80";
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Discount amount: $0.80";
 
-        assertTrue(consoleOutput.contains(expectedOutput));
-    }
+    assertTrue(consoleOutput.contains(expectedOutput));
+  }
 
-    @Test
-    public void RentalAgreement_Should_ContainFinalCharge_OnCheckout() {
+  @Test
+  public void RentalAgreement_Should_ContainFinalCharge_OnCheckout() {
     Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
     checkout.generateRentalAgreement();
 
@@ -236,18 +235,19 @@ class CheckoutTest {
     checkout.generateRentalAgreement();
 
     String consoleOutput = outputStream.toString();
-    String expectedOutput = "Tool code: LADW\n" +
-            "Tool type: Ladder\n" +
-            "Tool brand: Werner\n" +
-            "Rental days: 3\n" +
-            "Check out date: 07/02/20\n" +
-            "Due date: 07/05/20\n" +
-            "Daily rental charge: $1.99\n" +
-            "Charge days: 2\n" +
-            "Pre-discount charge: $3.98\n" +
-            "Discount percent: 10%\n" +
-            "Discount amount: $0.40\n" +
-            "Final charge: $3.58\n";
+    String expectedOutput =
+        "Tool code: LADW\n"
+            + "Tool type: Ladder\n"
+            + "Tool brand: Werner\n"
+            + "Rental days: 3\n"
+            + "Check out date: 07/02/20\n"
+            + "Due date: 07/05/20\n"
+            + "Daily rental charge: $1.99\n"
+            + "Charge days: 2\n"
+            + "Pre-discount charge: $3.98\n"
+            + "Discount percent: 10%\n"
+            + "Discount amount: $0.40\n"
+            + "Final charge: $3.58\n";
 
     assertEquals(expectedOutput, consoleOutput);
   }
@@ -258,18 +258,19 @@ class CheckoutTest {
     checkout.generateRentalAgreement();
 
     String consoleOutput = outputStream.toString();
-    String expectedOutput = "Tool code: CHNS\n" +
-            "Tool type: Chainsaw\n" +
-            "Tool brand: Stihl\n" +
-            "Rental days: 5\n" +
-            "Check out date: 07/02/15\n" +
-            "Due date: 07/07/15\n" +
-            "Daily rental charge: $1.49\n" +
-            "Charge days: 3\n" +
-            "Pre-discount charge: $4.47\n" +
-            "Discount percent: 25%\n" +
-            "Discount amount: $1.12\n" +
-            "Final charge: $3.35\n";
+    String expectedOutput =
+        "Tool code: CHNS\n"
+            + "Tool type: Chainsaw\n"
+            + "Tool brand: Stihl\n"
+            + "Rental days: 5\n"
+            + "Check out date: 07/02/15\n"
+            + "Due date: 07/07/15\n"
+            + "Daily rental charge: $1.49\n"
+            + "Charge days: 3\n"
+            + "Pre-discount charge: $4.47\n"
+            + "Discount percent: 25%\n"
+            + "Discount amount: $1.12\n"
+            + "Final charge: $3.35\n";
 
     assertEquals(expectedOutput, consoleOutput);
   }
@@ -280,18 +281,19 @@ class CheckoutTest {
     checkout.generateRentalAgreement();
 
     String consoleOutput = outputStream.toString();
-    String expectedOutput = "Tool code: JAKD\n" +
-            "Tool type: Jackhammer\n" +
-            "Tool brand: DeWalt\n" +
-            "Rental days: 6\n" +
-            "Check out date: 09/03/15\n" +
-            "Due date: 09/09/15\n" +
-            "Daily rental charge: $2.99\n" +
-            "Charge days: 3\n" +
-            "Pre-discount charge: $8.97\n" +
-            "Discount percent: 0%\n" +
-            "Discount amount: $0.00\n" +
-            "Final charge: $8.97\n";
+    String expectedOutput =
+        "Tool code: JAKD\n"
+            + "Tool type: Jackhammer\n"
+            + "Tool brand: DeWalt\n"
+            + "Rental days: 6\n"
+            + "Check out date: 09/03/15\n"
+            + "Due date: 09/09/15\n"
+            + "Daily rental charge: $2.99\n"
+            + "Charge days: 3\n"
+            + "Pre-discount charge: $8.97\n"
+            + "Discount percent: 0%\n"
+            + "Discount amount: $0.00\n"
+            + "Final charge: $8.97\n";
 
     assertEquals(expectedOutput, consoleOutput);
   }
@@ -302,18 +304,19 @@ class CheckoutTest {
     checkout.generateRentalAgreement();
 
     String consoleOutput = outputStream.toString();
-    String expectedOutput = "Tool code: JAKR\n" +
-            "Tool type: Jackhammer\n" +
-            "Tool brand: Ridgid\n" +
-            "Rental days: 9\n" +
-            "Check out date: 07/02/15\n" +
-            "Due date: 07/11/15\n" +
-            "Daily rental charge: $2.99\n" +
-            "Charge days: 5\n" +
-            "Pre-discount charge: $14.95\n" +
-            "Discount percent: 0%\n" +
-            "Discount amount: $0.00\n" +
-            "Final charge: $14.95\n";
+    String expectedOutput =
+        "Tool code: JAKR\n"
+            + "Tool type: Jackhammer\n"
+            + "Tool brand: Ridgid\n"
+            + "Rental days: 9\n"
+            + "Check out date: 07/02/15\n"
+            + "Due date: 07/11/15\n"
+            + "Daily rental charge: $2.99\n"
+            + "Charge days: 5\n"
+            + "Pre-discount charge: $14.95\n"
+            + "Discount percent: 0%\n"
+            + "Discount amount: $0.00\n"
+            + "Final charge: $14.95\n";
 
     assertEquals(expectedOutput, consoleOutput);
   }
@@ -324,18 +327,19 @@ class CheckoutTest {
     checkout.generateRentalAgreement();
 
     String consoleOutput = outputStream.toString();
-    String expectedOutput = "Tool code: JAKR\n" +
-            "Tool type: Jackhammer\n" +
-            "Tool brand: Ridgid\n" +
-            "Rental days: 4\n" +
-            "Check out date: 07/02/20\n" +
-            "Due date: 07/06/20\n" +
-            "Daily rental charge: $2.99\n" +
-            "Charge days: 1\n" +
-            "Pre-discount charge: $2.99\n" +
-            "Discount percent: 50%\n" +
-            "Discount amount: $1.50\n" +
-            "Final charge: $1.50\n";
+    String expectedOutput =
+        "Tool code: JAKR\n"
+            + "Tool type: Jackhammer\n"
+            + "Tool brand: Ridgid\n"
+            + "Rental days: 4\n"
+            + "Check out date: 07/02/20\n"
+            + "Due date: 07/06/20\n"
+            + "Daily rental charge: $2.99\n"
+            + "Charge days: 1\n"
+            + "Pre-discount charge: $2.99\n"
+            + "Discount percent: 50%\n"
+            + "Discount amount: $1.50\n"
+            + "Final charge: $1.50\n";
 
     assertEquals(expectedOutput, consoleOutput);
   }
