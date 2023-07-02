@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class HolidayChecker {
+public class DayChecker {
 
     public static boolean isHoliday(LocalDate date) {
         LocalDate laborDay = getLaborDay(date.getYear());
