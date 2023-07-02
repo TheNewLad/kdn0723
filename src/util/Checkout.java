@@ -22,8 +22,24 @@ public class Checkout {
         this.checkoutDate = checkoutDate;
     }
 
+    public Tool getTool() {
+        return tool;
+    }
+
+    public int getRentalDayCount() {
+        return rentalDayCount;
+    }
+
+    public int getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public LocalDate getCheckoutDate() {
+        return checkoutDate;
+    }
+
     public void generateRentalAgreement() {
-        RentalAgreement rentalAgreement = new RentalAgreement(tool.getToolCode(), tool.getToolType().getType(), tool.getBrand(), "", "", "", "", "", "", "", "", "");
+        RentalAgreement rentalAgreement = new RentalAgreement(getTool().getToolCode(), getTool().getToolType().getType(), getTool().getBrand(), "", "", "", "", "", "", "", "", "");
         rentalAgreement.print();
     }
 

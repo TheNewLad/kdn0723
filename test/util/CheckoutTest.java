@@ -1,15 +1,14 @@
 package util;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 class CheckoutTest {
 
@@ -83,6 +82,17 @@ class CheckoutTest {
 
         String consoleOutput = outputStream.toString();
         String expectedOutput = "Tool brand: Werner";
+
+        assertTrue(consoleOutput.contains(expectedOutput));
+    }
+
+    @Test
+    public void RentalAgreement_Should_ContainRentalDays_OnCheckout() {
+        Checkout checkout = new Checkout("LADW", 1, 0, LocalDate.of(2023, 7, 3));
+        checkout.generateRentalAgreement();
+
+        String consoleOutput = outputStream.toString();
+        String expectedOutput = "Rental days: 1";
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
