@@ -4,17 +4,17 @@ public class RentalAgreement {
     private final String toolCode;
     private final String toolType;
     private final String toolBrand;
-    private final int rentalDays;
+    private final String rentalDays;
     private final String checkoutDate;
     private final String dueDate;
-    private final double dailyRentalCharge;
-    private final int chargeDays;
-    private final double preDiscountCharge;
-    private final double discountPercent;
-    private final double discountAmount;
-    private final double finalCharge;
+    private final String dailyRentalCharge;
+    private final String chargeDays;
+    private final String preDiscountCharge;
+    private final String discountPercent;
+    private final String discountAmount;
+    private final String finalCharge;
 
-    public RentalAgreement(String toolCode, String toolType, String toolBrand, int rentalDays, String checkoutDate, String dueDate, double dailyRentalCharge, int chargeDays, double preDiscountCharge, double discountPercent, double discountAmount, double finalCharge) {
+    public RentalAgreement(String toolCode, String toolType, String toolBrand, String rentalDays, String checkoutDate, String dueDate, String dailyRentalCharge, String chargeDays, String preDiscountCharge, String discountPercent, String discountAmount, String finalCharge) {
         this.toolCode = toolCode;
         this.toolType = toolType;
         this.toolBrand = toolBrand;

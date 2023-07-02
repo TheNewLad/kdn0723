@@ -27,7 +27,7 @@ class RentalAgreementTest {
 
     @Test
     public void Should_PrintRentalAgreement_When_PrintMethodCalled() {
-        RentalAgreement rentalAgreement = new RentalAgreement("Tool Code", "Tool Type", "Tool Brand", 7, "7/4/23", "7/11/23", 2.99, 5, 14.95, 10, 1.50, 13.45);
+        RentalAgreement rentalAgreement = new RentalAgreement("Tool Code", "Tool Type", "Tool Brand", "7", "07/4/23", "07/11/23", "$2.99", "5", "$14.95", "10%", "$1.50", "$13.45");
         rentalAgreement.print();
 
         String consoleOutput = outputStream.toString();
@@ -35,14 +35,14 @@ class RentalAgreementTest {
                 "Tool type: Tool Type\n" +
                 "Tool brand: Tool Brand\n" +
                 "Rental days: 7\n" +
-                "Check out date: 7/4/23\n" +
-                "Due date: 7/11/23\n" +
-                "Daily rental charge: 2.99\n" +
+                "Check out date: 07/4/23\n" +
+                "Due date: 07/11/23\n" +
+                "Daily rental charge: $2.99\n" +
                 "Charge days: 5\n" +
-                "Pre-discount charge: 14.95\n" +
-                "Discount percent: 10.0\n" +
-                "Discount amount: 1.5\n" +
-                "Final charge: 13.45\n";
+                "Pre-discount charge: $14.95\n" +
+                "Discount percent: 10%\n" +
+                "Discount amount: $1.50\n" +
+                "Final charge: $13.45\n";
 
         assertEquals(expectedOutput, consoleOutput);
     }
