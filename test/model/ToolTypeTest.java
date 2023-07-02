@@ -14,4 +14,12 @@ class ToolTypeTest {
     assertTrue(toolType.getChargeDays().contains(DayType.WEEKDAY));
 
   }
+
+  @Test
+  public void Should_RemoveChargeDay() {
+    ToolType toolType = new ToolType("Ladder", 1.99);
+    toolType.addChargeDay(DayType.WEEKDAY);
+    toolType.removeChargeDay(DayType.WEEKDAY);
+    assertFalse(toolType.getChargeDays().contains(DayType.WEEKDAY));
+  }
 }

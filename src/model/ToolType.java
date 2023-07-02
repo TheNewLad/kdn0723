@@ -43,4 +43,8 @@ public class ToolType {
   public void addChargeDay(DayType dayType) {
     chargeDays.add(dayType);
   }
+
+  public void removeChargeDay(DayType dayType) {
+    chargeDays.remove(dayType);
+  }
 }
