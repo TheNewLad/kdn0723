@@ -92,6 +92,10 @@ public class Checkout {
     return getPreDiscountCharge() * (getDiscountPercent() / 100.0);
   }
 
+  private double getFinalCharge() {
+    return getPreDiscountCharge() - getDiscountAmount();
+  }
+
   public void generateRentalAgreement() {
     Tool tool = getTool();
     ToolType toolType = tool.getToolType();
@@ -109,7 +113,7 @@ public class Checkout {
             formatCurrency(getPreDiscountCharge()),
             formatPercent(getDiscountPercent()),
             formatCurrency(getDiscountAmount()),
-            "");
+            formatCurrency(getFinalCharge()));
     rentalAgreement.print();
   }
 

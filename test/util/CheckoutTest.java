@@ -210,4 +210,15 @@ class CheckoutTest {
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
+
+    @Test
+    public void RentalAgreement_Should_ContainFinalCharge_OnCheckout() {
+    Checkout checkout = new Checkout("LADW", 5, 10, LocalDate.of(2023, 6, 30));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Final charge: $7.16";
+
+    assertTrue(consoleOutput.contains(expectedOutput));
+  }
 }
