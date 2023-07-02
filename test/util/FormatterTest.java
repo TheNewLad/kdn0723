@@ -11,4 +11,22 @@ class FormatterTest {
         LocalDate date = LocalDate.of(2023, 7, 3);
         assertEquals("07/03/23", Formatter.formatDate(date));
     }
+
+    @Test
+    public void Should_ReturnFormattedCurrency_When_GivenDouble() {
+        assertEquals("$1.00", Formatter.formatCurrency(1.0));
+        assertEquals("$1.00", Formatter.formatCurrency(1.004));
+        assertEquals("$1.01", Formatter.formatCurrency(1.005));
+        assertEquals("$1.01", Formatter.formatCurrency(1.006));
+        assertEquals("$1.01", Formatter.formatCurrency(1.009));
+        assertEquals("$1.10", Formatter.formatCurrency(1.1));
+        assertEquals("$1.11", Formatter.formatCurrency(1.105));
+        assertEquals("$1.11", Formatter.formatCurrency(1.106));
+        assertEquals("$1.11", Formatter.formatCurrency(1.109));
+        assertEquals("$1.99", Formatter.formatCurrency(1.99));
+        assertEquals("$1.99", Formatter.formatCurrency(1.994));
+        assertEquals("$2.00", Formatter.formatCurrency(1.995));
+        assertEquals("$2.00", Formatter.formatCurrency(1.996));
+        assertEquals("$2.00", Formatter.formatCurrency(1.999));
+    }
 }
