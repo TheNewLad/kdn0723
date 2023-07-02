@@ -88,6 +88,10 @@ public class Checkout {
     return getChargeDays() * toolType.getDailyCharge();
   }
 
+  private double getDiscountAmount() {
+    return getPreDiscountCharge() * (getDiscountPercent() / 100.0);
+  }
+
   public void generateRentalAgreement() {
     Tool tool = getTool();
     ToolType toolType = tool.getToolType();
@@ -103,8 +107,8 @@ public class Checkout {
             formatCurrency(toolType.getDailyCharge()),
             String.valueOf(getChargeDays()),
             formatCurrency(getPreDiscountCharge()),
-            "",
             formatPercent(getDiscountPercent()),
+            formatCurrency(getDiscountAmount()),
             "");
     rentalAgreement.print();
   }
