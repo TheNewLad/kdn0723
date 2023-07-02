@@ -13,6 +13,10 @@ public class DayChecker {
         return date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY;
     }
 
+    public static boolean isWeekday(LocalDate date) {
+        return !isWeekend(date);
+    }
+
     public static boolean isHoliday(LocalDate date) {
         LocalDate laborDay = getLaborDay(date.getYear());
         LocalDate independenceDay = getObservableHoliday(LocalDate.of(date.getYear(), 7, 4));
