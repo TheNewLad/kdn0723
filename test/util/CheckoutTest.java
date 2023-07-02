@@ -96,4 +96,15 @@ class CheckoutTest {
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
+
+    @Test
+    public void RentalAgreement_Should_ContainCheckoutDate_OnCheckout() {
+        Checkout checkout = new Checkout("LADW", 1, 0, LocalDate.of(2023, 7, 3));
+        checkout.generateRentalAgreement();
+
+        String consoleOutput = outputStream.toString();
+        String expectedOutput = "Check out date: 07/03/23";
+
+        assertTrue(consoleOutput.contains(expectedOutput));
+    }
 }

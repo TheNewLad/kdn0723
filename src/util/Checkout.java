@@ -1,6 +1,8 @@
 package util;
 
 
+import static util.Formatter.formatDate;
+
 import datasource.ToolStore;
 import java.time.LocalDate;
 import model.Tool;
@@ -39,7 +41,7 @@ public class Checkout {
     }
 
     public void generateRentalAgreement() {
-        RentalAgreement rentalAgreement = new RentalAgreement(getTool().getToolCode(), getTool().getToolType().getType(), getTool().getBrand(), String.valueOf(getRentalDayCount()), "", "", "", "", "", "", "", "");
+        RentalAgreement rentalAgreement = new RentalAgreement(getTool().getToolCode(), getTool().getToolType().getType(), getTool().getBrand(), String.valueOf(getRentalDayCount()), formatDate(checkoutDate), "", "", "", "", "", "", "");
         rentalAgreement.print();
     }
 
