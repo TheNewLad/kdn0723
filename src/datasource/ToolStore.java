@@ -1,10 +1,9 @@
 package datasource;
 
-import model.Tool;
-import model.ToolType;
-
 import java.util.ArrayList;
 import java.util.List;
+import model.Tool;
+import model.ToolType;
 
 public class ToolStore {
     private static ToolStore instance;

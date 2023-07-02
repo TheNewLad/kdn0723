@@ -1,10 +1,10 @@
 package datasource;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import model.Tool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ToolStoreTest {
     ToolStore toolStore;

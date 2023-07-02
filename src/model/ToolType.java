@@ -23,28 +23,28 @@ public class ToolType {
         return dailyCharge;
     }
 
-    public boolean isWeekdayCharge() {
-        return weekdayCharge;
-    }
-
-    public boolean isWeekendCharge() {
-        return weekendCharge;
-    }
-
-    public boolean isHolidayCharge() {
-        return holidayCharge;
-    }
-
     public void setDailyCharge(double dailyCharge) {
         this.dailyCharge = dailyCharge;
+    }
+
+    public boolean isWeekdayCharge() {
+        return weekdayCharge;
     }
 
     public void setWeekdayCharge(boolean weekdayCharge) {
         this.weekdayCharge = weekdayCharge;
     }
 
+    public boolean isWeekendCharge() {
+        return weekendCharge;
+    }
+
     public void setWeekendCharge(boolean weekendCharge) {
         this.weekendCharge = weekendCharge;
+    }
+
+    public boolean isHolidayCharge() {
+        return holidayCharge;
     }
 
     public void setHolidayCharge(boolean holidayCharge) {

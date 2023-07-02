@@ -1,11 +1,11 @@
 package util;
 
+import static java.time.temporal.TemporalAdjusters.firstInMonth;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-
-import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
 public class HolidayChecker {
 
