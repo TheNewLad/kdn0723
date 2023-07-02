@@ -1,13 +1,12 @@
 package util;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 class RentalAgreementTest {
 
@@ -27,7 +26,7 @@ class RentalAgreementTest {
 
     @Test
     public void Should_PrintRentalAgreement_When_PrintMethodCalled() {
-        RentalAgreement rentalAgreement = new RentalAgreement("Tool Code", "Tool Type", "Tool Brand", "7", "07/4/23", "07/11/23", "$2.99", "5", "$14.95", "10%", "$1.50", "$13.45");
+        RentalAgreement rentalAgreement = new RentalAgreement("Tool Code", "Tool Type", "Tool Brand", "7", "07/04/23", "07/11/23", "$2.99", "5", "$14.95", "10%", "$1.50", "$13.45");
         rentalAgreement.print();
 
         String consoleOutput = outputStream.toString();
@@ -35,7 +34,7 @@ class RentalAgreementTest {
                 "Tool type: Tool Type\n" +
                 "Tool brand: Tool Brand\n" +
                 "Rental days: 7\n" +
-                "Check out date: 07/4/23\n" +
+                "Check out date: 07/04/23\n" +
                 "Due date: 07/11/23\n" +
                 "Daily rental charge: $2.99\n" +
                 "Charge days: 5\n" +
