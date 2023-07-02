@@ -3,11 +3,13 @@ package util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Formatter {
 
     public static String formatDate(LocalDate date) {
-        return String.format("%02d/%02d/%02d", date.getMonthValue(), date.getDayOfMonth(), date.getYear() % 100);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy");
+        return date.format(formatter);
     }
 
     public static String formatCurrency(double amount) {
