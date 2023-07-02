@@ -1,5 +1,6 @@
 package util;
 
+import static util.Formatter.formatCurrency;
 import static util.Formatter.formatDate;
 
 import datasource.ToolStore;
@@ -57,7 +58,7 @@ public class Checkout {
             String.valueOf(getRentalDayCount()),
             formatDate(checkoutDate),
             formatDate(getDueDate()),
-            "",
+            formatCurrency(getTool().getToolType().getDailyCharge()),
             "",
             "",
             "",
