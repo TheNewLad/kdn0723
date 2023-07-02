@@ -1,7 +1,6 @@
 package util;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -220,5 +219,124 @@ class CheckoutTest {
     String expectedOutput = "Final charge: $7.16";
 
     assertTrue(consoleOutput.contains(expectedOutput));
+  }
+
+  @Test
+  public void Test1_Should_ThrowIllegalArgumentException_When_DiscountCodeIsOutOfRange() {
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> {
+          Checkout checkout = new Checkout("JAKR", 5, 101, LocalDate.of(2015, 9, 3));
+        });
+  }
+
+  @Test
+  public void Test2_Should_PrintFinalChargeOf_3_58() {
+    Checkout checkout = new Checkout("LADW", 3, 10, LocalDate.of(2020, 7, 2));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Tool code: LADW\n" +
+            "Tool type: Ladder\n" +
+            "Tool brand: Werner\n" +
+            "Rental days: 3\n" +
+            "Check out date: 07/02/20\n" +
+            "Due date: 07/05/20\n" +
+            "Daily rental charge: $1.99\n" +
+            "Charge days: 2\n" +
+            "Pre-discount charge: $3.98\n" +
+            "Discount percent: 10%\n" +
+            "Discount amount: $0.40\n" +
+            "Final charge: $3.58\n";
+
+    assertEquals(expectedOutput, consoleOutput);
+  }
+
+  @Test
+  public void Test3_Should_PrintFinalChargeOf_3_35() {
+    Checkout checkout = new Checkout("CHNS", 5, 25, LocalDate.of(2015, 7, 2));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Tool code: CHNS\n" +
+            "Tool type: Chainsaw\n" +
+            "Tool brand: Stihl\n" +
+            "Rental days: 5\n" +
+            "Check out date: 07/02/15\n" +
+            "Due date: 07/07/15\n" +
+            "Daily rental charge: $1.49\n" +
+            "Charge days: 3\n" +
+            "Pre-discount charge: $4.47\n" +
+            "Discount percent: 25%\n" +
+            "Discount amount: $1.12\n" +
+            "Final charge: $3.35\n";
+
+    assertEquals(expectedOutput, consoleOutput);
+  }
+
+  @Test
+  public void Test4_Should_PrintFinalChargeOf_8_97() {
+    Checkout checkout = new Checkout("JAKD", 6, 0, LocalDate.of(2015, 9, 3));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Tool code: JAKD\n" +
+            "Tool type: Jackhammer\n" +
+            "Tool brand: DeWalt\n" +
+            "Rental days: 6\n" +
+            "Check out date: 09/03/15\n" +
+            "Due date: 09/09/15\n" +
+            "Daily rental charge: $2.99\n" +
+            "Charge days: 3\n" +
+            "Pre-discount charge: $8.97\n" +
+            "Discount percent: 0%\n" +
+            "Discount amount: $0.00\n" +
+            "Final charge: $8.97\n";
+
+    assertEquals(expectedOutput, consoleOutput);
+  }
+
+  @Test
+  public void Test5_Should_PrintFinalChargeOf_14_95() {
+    Checkout checkout = new Checkout("JAKR", 9, 0, LocalDate.of(2015, 7, 2));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Tool code: JAKR\n" +
+            "Tool type: Jackhammer\n" +
+            "Tool brand: Ridgid\n" +
+            "Rental days: 9\n" +
+            "Check out date: 07/02/15\n" +
+            "Due date: 07/11/15\n" +
+            "Daily rental charge: $2.99\n" +
+            "Charge days: 5\n" +
+            "Pre-discount charge: $14.95\n" +
+            "Discount percent: 0%\n" +
+            "Discount amount: $0.00\n" +
+            "Final charge: $14.95\n";
+
+    assertEquals(expectedOutput, consoleOutput);
+  }
+
+  @Test
+  public void Test6_Should_PrintFinalChargeOf_1_50() {
+    Checkout checkout = new Checkout("JAKR", 4, 50, LocalDate.of(2020, 7, 2));
+    checkout.generateRentalAgreement();
+
+    String consoleOutput = outputStream.toString();
+    String expectedOutput = "Tool code: JAKR\n" +
+            "Tool type: Jackhammer\n" +
+            "Tool brand: Ridgid\n" +
+            "Rental days: 4\n" +
+            "Check out date: 07/02/20\n" +
+            "Due date: 07/06/20\n" +
+            "Daily rental charge: $2.99\n" +
+            "Charge days: 1\n" +
+            "Pre-discount charge: $2.99\n" +
+            "Discount percent: 50%\n" +
+            "Discount amount: $1.50\n" +
+            "Final charge: $1.50\n";
+
+    assertEquals(expectedOutput, consoleOutput);
   }
 }

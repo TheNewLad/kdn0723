@@ -50,6 +50,18 @@ public class Checkout {
     return checkoutDate.plusDays(rentalDayCount);
   }
 
+  private void validateRentalDayCount(int rentalDayCount) {
+    if (rentalDayCount < 1) {
+      throw new IllegalArgumentException("Rental day count is not 1 or greater.");
+    }
+  }
+
+  private void validateDiscountPercent(int discountPercent) {
+    if (discountPercent < 0 || discountPercent > 100) {
+      throw new IllegalArgumentException("Discount percent is not in the range 0-100.");
+    }
+  }
+
   private int getChargeDays() {
     int chargeDays = 0;
     LocalDate date = checkoutDate.plusDays(1); // Add 1 to exclude the checkout date.
@@ -114,18 +126,7 @@ public class Checkout {
             formatPercent(getDiscountPercent()),
             formatCurrency(getDiscountAmount()),
             formatCurrency(getFinalCharge()));
+
     rentalAgreement.print();
-  }
-
-  private void validateRentalDayCount(int rentalDayCount) {
-    if (rentalDayCount < 1) {
-      throw new IllegalArgumentException("Rental day count is not 1 or greater.");
-    }
-  }
-
-  private void validateDiscountPercent(int discountPercent) {
-    if (discountPercent < 0 || discountPercent > 100) {
-      throw new IllegalArgumentException("Discount percent is not in the range 0-100.");
-    }
   }
 }
