@@ -107,4 +107,15 @@ class CheckoutTest {
 
         assertTrue(consoleOutput.contains(expectedOutput));
     }
+
+    @Test
+    public void RentalAgreement_Should_HaveCalculatedDueDate_OnCheckout() {
+        Checkout checkout = new Checkout("LADW", 1, 0, LocalDate.of(2023, 7, 3));
+        checkout.generateRentalAgreement();
+
+        String consoleOutput = outputStream.toString();
+        String expectedOutput = "Due date: 07/04/23";
+
+        assertTrue(consoleOutput.contains(expectedOutput));
+    }
 }

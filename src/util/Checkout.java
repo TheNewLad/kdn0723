@@ -44,6 +44,10 @@ public class Checkout {
     return checkoutDate;
   }
 
+    public LocalDate getDueDate() {
+        return checkoutDate.plusDays(rentalDayCount);
+    }
+
   public void generateRentalAgreement() {
     RentalAgreement rentalAgreement =
         new RentalAgreement(
@@ -52,7 +56,7 @@ public class Checkout {
             getTool().getBrand(),
             String.valueOf(getRentalDayCount()),
             formatDate(checkoutDate),
-            "",
+            formatDate(getDueDate()),
             "",
             "",
             "",
