@@ -1,53 +1,54 @@
 package model;
 
+import static util.DayChecker.DayType;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class ToolType {
-    private final String type;
-    private double dailyCharge;
-    private boolean weekdayCharge;
-    private boolean weekendCharge;
-    private boolean holidayCharge;
+  private final String type;
+  private double dailyCharge;
+  private Set<DayType> chargeDays;
 
-    public ToolType(String type, double dailyCharge, boolean weekdayCharge, boolean weekendCharge, boolean holidayCharge) {
-        this.type = type;
-        this.dailyCharge = dailyCharge;
-        this.weekdayCharge = weekdayCharge;
-        this.weekendCharge = weekendCharge;
-        this.holidayCharge = holidayCharge;
-    }
+  public ToolType(String type, double dailyCharge, Set<DayType> chargeDays) {
+    this.type = type;
+    this.dailyCharge = dailyCharge;
+    this.chargeDays = chargeDays;
+  }
 
-    public String getType() {
-        return type;
-    }
+  public ToolType(String type, double dailyCharge) {
+    this(type, dailyCharge, new HashSet<>());
+  }
 
-    public double getDailyCharge() {
-        return dailyCharge;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public void setDailyCharge(double dailyCharge) {
-        this.dailyCharge = dailyCharge;
-    }
+  public double getDailyCharge() {
+    return dailyCharge;
+  }
 
-    public boolean isWeekdayCharge() {
-        return weekdayCharge;
-    }
+  public void setDailyCharge(double dailyCharge) {
+    this.dailyCharge = dailyCharge;
+  }
 
-    public void setWeekdayCharge(boolean weekdayCharge) {
-        this.weekdayCharge = weekdayCharge;
-    }
+  public Set<DayType> getChargeDays() {
+    return chargeDays;
+  }
 
-    public boolean isWeekendCharge() {
-        return weekendCharge;
-    }
+  public void setChargeDays(Set<DayType> chargeDays) {
+    this.chargeDays = chargeDays;
+  }
 
-    public void setWeekendCharge(boolean weekendCharge) {
-        this.weekendCharge = weekendCharge;
-    }
+  public void addChargeDay(DayType dayType) {
+    chargeDays.add(dayType);
+  }
 
-    public boolean isHolidayCharge() {
-        return holidayCharge;
-    }
+  public void removeChargeDay(DayType dayType) {
+    chargeDays.remove(dayType);
+  }
 
-    public void setHolidayCharge(boolean holidayCharge) {
-        this.holidayCharge = holidayCharge;
-    }
+  public boolean isChargeableDay(DayType dayType) {
+    return chargeDays.contains(dayType);
+  }
 }

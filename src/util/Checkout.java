@@ -71,7 +71,7 @@ public class Checkout {
       DayType dayType = getDayType(date);
       ToolType toolType = getTool().getToolType();
 
-      if (shouldChargeForDayType(dayType, toolType)) {
+      if (toolType.isChargeableDay(dayType)) {
         chargeDays++;
       }
 
@@ -79,19 +79,6 @@ public class Checkout {
     }
 
     return chargeDays;
-  }
-
-  private boolean shouldChargeForDayType(DayType dayType, ToolType toolType) {
-    switch (dayType) {
-      case HOLIDAY:
-        return toolType.isHolidayCharge();
-      case WEEKEND:
-        return toolType.isWeekendCharge();
-      case WEEKDAY:
-        return toolType.isWeekdayCharge();
-      default:
-        return false;
-    }
   }
 
   private double getPreDiscountCharge() {
